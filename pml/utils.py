@@ -12,6 +12,8 @@ def chunked_iterator(df, chunk_size=1000000):
       yield r[1]
     if len(subset) < chunk_size: break
 
+
+print('Hello World');
 def get_write_file_stream(file):
   return gzip.GzipFile(file, 'wb') if file.endswith('.gz') else open(file, "wb")
 
@@ -27,6 +29,7 @@ def get_optimal_numeric_type(dtype, min, max, aggresiveness=0):
     '''
     if max <= 255: return 'uint8'
     if max <= 65535: return 'uint16'
+    
     if max <= 4294967295: return 'uint32'
     if max <= 18446744073709551615: return 'uint64'
     raise Exception(repr(x) + ' is too large')
@@ -90,3 +93,4 @@ def create_df_from_templage(template, data, index=None):
       df[c] = df[c].astype(template[c].dtype)
   return df
 
+print('Hello World2');
